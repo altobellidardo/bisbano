@@ -1,0 +1,253 @@
+/* css reset */
+* {
+    font-family: 'Open Sans', sans-serif;
+    cursor: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1, h2, h3 {
+    text-wrap: balance;
+    color: var(--heading);
+}
+p {
+    text-wrap: pretty;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --transition-time: .3s;
+    --primary-color: #D74E09;
+    --secondary-color: #93B5C6;
+    --heading: var(--primary-color);
+    --text: #000;
+    --refs: #FFF;
+}
+:root[data-theme="dark"] {
+    --primary-color: #1F271B;
+    --secondary-color: #19647E;
+    --heading: #F0CEA0;
+    --text: #e5e4df;
+    --refs: var(--text);
+}
+
+body {
+    background-color: var(--secondary-color);
+    width: 60vw;
+    margin: 0 auto;
+    color: var(--text);
+}
+
+*::selection {
+    background-color: var(--primary-color);
+    color: var(--text);
+}
+
+#cursor {
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: 2px solid var(--secondary-color);
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    z-index: 999;
+    display: none;
+    transition: border-width .1s;
+}
+#cursor.clicked {
+    background-color: var(--secondary-color);
+}
+#cursor.hovered {
+    border-width: 17px;
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+header div {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+header div img {
+    border-radius: 50%;
+    width: 250px;
+    border: 6px solid var(--primary-color);
+    transition: transform .3s;
+}
+header div img:hover {
+    transform: scale(1.1);
+}
+
+header div h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: auto;
+}
+
+.redes-sociales {
+    display: flex;
+    background-color: var(--primary-color);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 20px;
+    gap: 40px;
+    transition-duration: .6s;
+    transition-property: gap;
+    transition-timing-function: ease-in;
+}
+.redes-sociales svg {
+    color: var(--text);
+    opacity: 0.3;
+    width: 50px;
+    height: 50px;
+    transition-property: opacity;
+    transition-duration: .3s;
+}
+.redes-sociales svg:hover{
+    opacity: 1;
+}
+
+.redes-sociales button {
+    background-color: transparent;
+    border: none;
+}
+
+.redes-sociales.left {
+    position: fixed;
+    left: -100px;
+    top: 100px;
+    flex-direction: column;
+    gap: 80px;
+    transform: translateX(120px);
+
+    transition: transform .3s ease-in, gap .3s ease-in .3s;
+}
+
+.redes-sociales.left svg {
+    width: 40px;
+}
+
+a.ref {
+    margin-bottom: 30px;
+    display: block;
+    background-color: var(--primary-color);
+    color: var(--refs);
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px 0;
+}
+
+section p {
+    margin: 10px 0 30px;
+    width: 90%;
+}
+
+section ul {
+    margin-left: 50px;
+    gap: 10px;
+}
+
+section#aboutme ul {
+    list-style: none;
+}
+
+section#CV h2 {
+    margin-bottom: 20px;
+}
+section#CV h3, ul li {
+    margin-bottom: 10px;
+}
+
+section#CV .card{
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 30px;
+}
+section#CV .card#freecodecamp {
+    margin-top: 50px;
+}
+
+section#CV .card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section#CV .card img {
+    width: 300px;
+    background-color: #00000050;
+    border-radius: 10px;
+    padding: 15px;
+}
+section#CV .card img#freecodecamp {
+    width: 500px;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    section#CV .card {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 90vw;
+        margin-bottom: 100px;
+    }
+
+    .redes-sociales.left {
+        gap: 30px;
+        bottom: -100px;
+        top: auto;
+        left: auto;
+        flex-direction: row;
+
+        transform: translateY(-130px);
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        gap: 50px;
+        height: 100vh;
+    }
+
+    header div {
+        flex-direction: column;
+    }
+
+    section#CV .card img {
+        width: 100%;
+    }
+
+    section#CV .card img#freecodecamp {
+        width: 100%;
+    }
+}
